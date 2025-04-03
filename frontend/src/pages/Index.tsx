@@ -323,7 +323,7 @@ const Index = () => {
               <Button size="lg" variant="secondary" asChild className="shadow-pro">
                 <Link to="/register">Create an Account</Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 shadow-sm" asChild>
+              <Button size="lg" variant="outline" className="border-white  hover:bg-white/10 shadow-sm" asChild>
                 <Link to="/events">Browse Events</Link>
               </Button>
             </div>
