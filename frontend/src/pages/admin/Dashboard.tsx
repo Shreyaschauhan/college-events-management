@@ -125,10 +125,10 @@ const AdminDashboard = () => {
       toast.success(`Event "${updatedEvent.name}" has been approved`);
 
       // Update local state efficiently
-      setEvents(prevEvents => prevEvents.map(e => e.id === eventId ? updatedEvent : e));
-      setPendingEvents(prevPending => prevPending.filter(e => e.id !== eventId));
+      setEvents(prevEvents => prevEvents.map(e => e._id === eventId ? updatedEvent : e));
+      setPendingEvents(prevPending => prevPending.filter(e => e._id !== eventId));
       // Add to approved, ensuring no duplicates if somehow already there
-      setApprovedEvents(prevApproved => [updatedEvent, ...prevApproved.filter(e => e.id !== eventId)]);
+      setApprovedEvents(prevApproved => [updatedEvent, ...prevApproved.filter(e => e._id !== eventId)]);
 
       // Update stats count locally for immediate feedback (optional but nice)
       setDashboardStats(prev => prev ? ({...prev, pendingEventCount: Math.max(0, prev.pendingEventCount - 1)}) : null);
@@ -148,10 +148,10 @@ const AdminDashboard = () => {
       toast.success(`Event "${updatedEvent.name}" has been rejected`);
 
       // Update local state efficiently
-      setEvents(prevEvents => prevEvents.map(e => e.id === eventId ? updatedEvent : e));
-      setPendingEvents(prevPending => prevPending.filter(e => e.id !== eventId));
+      setEvents(prevEvents => prevEvents.map(e => e._id === eventId ? updatedEvent : e));
+      setPendingEvents(prevPending => prevPending.filter(e => e._id !== eventId));
        // Add to rejected, ensuring no duplicates
-      setRejectedEvents(prevRejected => [updatedEvent, ...prevRejected.filter(e => e.id !== eventId)]);
+      setRejectedEvents(prevRejected => [updatedEvent, ...prevRejected.filter(e => e._id !== eventId)]);
 
        // Update stats count locally
       setDashboardStats(prev => prev ? ({...prev, pendingEventCount: Math.max(0, prev.pendingEventCount - 1)}) : null);

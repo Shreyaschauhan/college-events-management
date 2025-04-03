@@ -28,7 +28,7 @@ const EventList = ({
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<EventCategory | 'All'>('All');
   const [showOnlyUpcoming, setShowOnlyUpcoming] = useState(false);
-
+  console.log(events);
   // Filter events based on search term and category
   const filteredEvents = events.filter(event => {
     // --- MODIFIED SECTION START ---
@@ -155,7 +155,7 @@ const EventList = ({
           {filteredEvents.map(event => (
             // Make sure EventCard uses event.title, event.id etc. correctly
             <EventCard
-              key={event.id} // Use event.id which was mapped from _id
+              key={event._id} // Use event.id which was mapped from _id
               event={event}
               showStatus={showStatus}
             />

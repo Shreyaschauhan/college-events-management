@@ -209,15 +209,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ type, redirectPath = '/' }) => {
           </p>
         )}
       </div>
-
-      {type === 'login' && (
-        <div className="text-center text-sm">
-          <p className="text-muted-foreground">Demo Accounts:</p>
-          <p className="text-xs text-muted-foreground">Admin: admin@example.com / admin123</p>
-          <p className="text-xs text-muted-foreground">Organizer: organizer@example.com / organizer123</p>
-          <p className="text-xs text-muted-foreground">Student: student@example.com / student123</p>
-        </div>
-      )}
     </div>
   );
 };

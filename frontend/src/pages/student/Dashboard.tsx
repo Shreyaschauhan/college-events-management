@@ -82,7 +82,7 @@ const StudentDashboard = () => {
 
             // Map API fields to your frontend Event type
             return {
-              id: apiEvent._id, // Map _id to id
+              _id: apiEvent._id, // Map _id to id
               title: apiEvent.name, // Map name to title (assuming 'title' in your Event type)
               description: apiEvent.description,
               category: apiEvent.category,
