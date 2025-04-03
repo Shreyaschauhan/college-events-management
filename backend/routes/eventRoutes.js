@@ -8,7 +8,8 @@ const {
     getEventById,
     getEvents,
     getApprovedUpcomingEvents,
-    enrollUserToEvent, // Import the new controller function
+    enrollUserToEvent,
+    getEventParticipants
 } = require("../controllers/eventController");
 
 router.post("/event", createEvent);
@@ -18,5 +19,7 @@ router.delete("/event/:id", deleteEvent);
 router.get("/approved-events", getApprovedUpcomingEvents);
 router.post("/event/:eventId/enroll", enrollUserToEvent); // New route for enrolling users
 router.get("/event/:id", getEventById); // Added route to get single event
+router.get("/event/:eventId/participants", getEventParticipants);
+
 
 module.exports = router;

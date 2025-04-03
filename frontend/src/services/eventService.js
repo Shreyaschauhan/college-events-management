@@ -109,6 +109,23 @@ const enrollUserToEvent = async (eventId, userData) => {
     }
 };
 
+/**
+ * Fetches the list of participants for a specific event. Requires authentication (organizer/admin).
+ * @param {string} eventId - The ID of the event.
+ * @returns {Promise<Array<object>>} - A list of participant user objects (e.g., { _id, fullName, email }).
+ */
+const getEventParticipants = async (eventId) => {
+  try {
+    // Token should be added by the interceptor, assuming this endpoint requires authentication
+    // The path matches the backend route: GET /events/event/:eventId/participants
+    const response = await apiClient.get(`/events/event/${eventId}/participants`);
+    return response.data; // Backend returns an array of participant user objects
+  } catch (error) {
+    console.error(`Get event participants (${eventId}) service error:`, error.response?.data || error.message);
+    throw error.response?.data || new Error('Failed to fetch event participants');
+  }
+};
+
 export const eventService = {
   getAllEvents,
   getEventById,
@@ -117,4 +134,5 @@ export const eventService = {
   updateEvent,
   deleteEvent,
   enrollUserToEvent,
+  getEventParticipants
 };

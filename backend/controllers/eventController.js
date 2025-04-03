@@ -119,6 +119,41 @@ const enrollUserToEvent = async (req, res) => {
     }
 };
 
+const getEventParticipants = async (req, res) => {
+    try {
+        const { eventId } = req.params; // Get eventId from URL parameters
+
+        // Validate if eventId is a valid MongoDB ObjectId
+        if (!mongoose.Types.ObjectId.isValid(eventId)) {
+            return res.status(400).json({ message: 'Invalid Event ID format' });
+        }
+
+        // Find the event and populate the participants field
+        // Select only specific fields from the User model (e.g., fullName, email, _id)
+        // IMPORTANT: Exclude sensitive fields like password!
+        const event = await Event.findById(eventId).populate({
+            path: 'participants',
+            select: '_id fullName email' // Specify the fields you want from the User model
+        });
+
+        // Check if the event exists
+        if (!event) {
+            return res.status(404).json({ message: "Event not found" });
+        }
+
+        // Optionally: Add authorization check here
+        // For example, check if req.user.id === event.organizerId.toString() || req.user.role === 'admin'
+        // This depends on how you handle authentication/authorization (e.g., JWT middleware)
+
+        // Return the list of participants
+        res.json(event.participants);
+
+    } catch (error) {
+        console.error("Error fetching event participants:", error); // Log the error for debugging
+        res.status(500).json({ error: "Failed to retrieve participants", details: error.message });
+    }
+};
+
 module.exports = {
     createEvent,
     updateEvent,
@@ -127,4 +162,5 @@ module.exports = {
     getEvents,
     getApprovedUpcomingEvents,
     enrollUserToEvent,
+    getEventParticipants
 };
