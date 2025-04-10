@@ -18,6 +18,7 @@ import AdminDashboard from "./pages/admin/Dashboard";
 import OrganizerDashboard from "./pages/organizer/Dashboard";
 import StudentDashboard from "./pages/student/Dashboard";
 import NotFound from "./pages/NotFound";
+// import EditEvent from "./pages/EditEvent";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +41,7 @@ const App = () => (
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
                 <Route path="/organizer/dashboard" element={<OrganizerDashboard />} />
                 <Route path="/student/dashboard" element={<StudentDashboard />} />
+                {/* <Route path="/edit-event/:id" element={<EditEvent />} /> */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

@@ -11,7 +11,7 @@ import { eventService } from '@/services/eventService'; // Import the event serv
 import { APP_NAME, APP_DESCRIPTION } from '@/lib/config';
 
 // --- ADDED: Define a placeholder image URL ---
-const PLACEHOLDER_EVENT_IMAGE_URL = "https://via.placeholder.com/400x200.png?text=Event+Image";
+const PLACEHOLDER_EVENT_IMAGE_URL = "https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80";
 // You can replace this with any other placeholder service or a static image URL in your public folder, e.g., "/images/event-placeholder.png"
 
 const Index = () => {
